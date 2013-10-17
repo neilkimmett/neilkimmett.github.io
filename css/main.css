@@ -1,0 +1,125 @@
+/*****************************************************************************/
+/*
+/* Common
+/*
+/*****************************************************************************/
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body { height: 100%; }
+
+body {
+  background-color: #FFF;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: small;
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%; }
+
+p { margin: 1em 0; }
+
+/*****************************************************************************/
+/*
+/* Site
+/*
+/*****************************************************************************/
+
+a         { color: #000000; }
+a:hover   { color: #444444; }
+
+h1 {
+  font-size: 200%;
+}
+
+.site {
+  font-size: 115%;
+  text-align: left;
+  width: 42em;
+  margin: 3em auto 2em;
+  line-height: 1.5em;
+}
+
+.site .header a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.site .header h1.title {
+  display: inline-block;
+  border-bottom: 1px solid #cccccc;
+}
+
+.content {
+  margin: 2em 0;
+}
+
+.content ul {
+  margin: 2em 0;
+}
+
+.content ul > li {
+  list-style-type: none;
+  margin: 1.5em 0 0 0;
+}
+
+.content a {
+  color: #333333;
+}
+
+.content a i {
+  text-decoration: none;
+  margin: 1em 1em 1em 0;
+}
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 680px) {
+  .site {
+    margin: 2em 0;
+    padding: 0 1em;
+    width: 80%;
+  }
+}
+
+/*****************************************************************************/
+/*
+/* Posts
+/*
+/*****************************************************************************/
+
+/* standard */
+.post pre {
+  border: 1px solid #ddd;
+  background-color: #eef;
+  padding: 0 .4em;
+}
+
+.post ul, .post ol {
+  margin-left: 1.35em;
+}
+
+.post code {
+  border: 1px solid #ddd;
+  background-color: #eef;
+  padding: 0 .2em;
+}
+
+.post pre code {
+  border: none;
+}
+
+/* terminal */
+.post pre.terminal {
+  border: 1px solid #000;
+  background-color: #333;
+  color: #FFF;
+}
+
+.post pre.terminal code {
+  background-color: #333;
+}
