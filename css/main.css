@@ -49,16 +49,20 @@ h2 {
   line-height: 1.5em;
 }
 
-.site .header a {
+.header a {
   font-weight: bold;
   text-decoration: none;
 }
 
-.site .header h1.title {
+.header h1.title {
   display: inline-block;
 }
 
-.site .header ul.nav > li {
+.nav {
+  margin-top: 1em;
+}
+
+ul.nav > li {
   display: inline;
   list-style: none;
 }
@@ -70,12 +74,15 @@ h2 {
 
 .site .header ul.nav > li > a {
   font-weight: normal;
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.content ul.posts {
+  margin: 3em 0;
 }
 
 footer {
-  text-align: center;
-  padding: 2em;
+  padding-bottom: 1em;
 }
 
 footer li {
@@ -102,6 +109,20 @@ footer li {
 .content a i {
   text-decoration: none;
   margin: 1em 1em 1em 0;
+}
+
+.date {
+  font-size: 0.9em;
+  margin: 0.5em 0;
+}
+
+.footnotes {
+  margin-top: 3em;
+  border-top: 1px solid #ccc;
+}
+
+code {
+  word-wrap: break-word;
 }
 
 /* Smaller than standard 960 (devices and browsers) */

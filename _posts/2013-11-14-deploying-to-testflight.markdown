@@ -22,20 +22,18 @@ ipa distribute
 
 As someone who loves the command line this fills me with delight, no more dicking around filling out forms and clicking on boxes, just straight terminal goodness. But wait! You guessed it, we can do better.
 
-Rather than typing (well, copypasting) in our Test  flight API token and team token each time, we can feed them to `ipa` using the `--team-token` and `--API-token` flags. To do so we'll wrap up `ipa` in our own little bash script that contains our Testflight credentials, like so
+Rather than typing (well, copypasting) in our Test  flight API token and team token each time, we can feed them to `ipa` using the `--team-token` and `--API-token` flags. To do so we'll wrap up `ipa` in our own little bash script that contains our Testflight credentials, like so<sup>1</sup>
 
 {% highlight bash %}
 
-API_TOKEN="<your api token, found at >"
-TEAM_TOKEN="<your team token, found at >"
+API_TOKEN="<your api token>"
+TEAM_TOKEN="<your team token>"
 ipa build
 ipa distribute --api_token $API_TOKEN --team_token $TEAM_TOKEN
 
 {% endhighlight %}
 
-[1]
-
-Note we could use the flags `-a` and `-T` for the API and team tokens respectively, but I prefer to use the full versions in scripts for readability purposes.
+You can find your API token and your team token at [https://testflightapp.com/account/#api](https://testflightapp.com/account/#api) and [https://testflightapp.com/dashboard/team/edit/](https://testflightapp.com/dashboard/team/edit/) respectively. Note we could use the flags `-a` and `-T` for the API and team tokens respectively, but I prefer to use the full versions in scripts for readability purposes.
 
 Frequently when I come to write releases notes for new build I forget a lot of the new things in that particular build. To help this I like to write release notes as I go, popping them in a `releasenotes.txt` file. How convenient then that `ipa` includes a `--notes` option, which you can pass release notes into. Lets update our script taking care to deal with the case where we don't have any release notes.
 
@@ -59,11 +57,11 @@ Another pain point for me is accidentally distributing a build with the wrong pr
 
 {% highlight bash %}
 
-API_TOKEN="<your api token, found at >"
-TEAM_TOKEN="<your team token, found at >"
+API_TOKEN="<your api token>"
+TEAM_TOKEN="<your team token>"
 NOTES="releasenotes.txt"
 
-if grep --quiet 'PROVISIONING_PROFILE = "< your provisiong profile here >";' SuperCoolApp.xcodeproj/project.pbxproj
+if grep --quiet 'PROVISIONING_PROFILE = "< prov prof hash >";' SuperCoolApp.xcodeproj/project.pbxproj
 then
   ipa build
 
@@ -79,12 +77,12 @@ fi
     
 Its quick, its dirty, but it works and thats the most important thing. I'd quite like the script to automatically set the correct provisioning profile for me, but thats a challenge for future me.
 
-Finally, we can add a bit of messaging to indicate the scripts progress (with added ticks and crosses and colours) and use the `ipa` flags `--lists` and `--notify` to set permissions for the build and notify testers. The final script in all its glory looks like this
+Finally, we can add a bit of messaging to indicate the script's progress (with added ticks and crosses and colours) and use the `ipa` flags `--lists` and `--notify` to set permissions for the build and notify testers. The final script in all its glory looks like this
 
 {% highlight bash %}
 
-API_TOKEN="<your api token, found at >"
-TEAM_TOKEN="<your team token, found at >"
+API_TOKEN="<your api token>"
+TEAM_TOKEN="<your team token>"
 NOTES="releasenotes.txt"
 
 
@@ -92,7 +90,7 @@ textreset=$(tput sgr0) # reset the foreground colour
 red=$(tput setaf 1)
 green=$(tput setaf 2)
 
-if grep --quiet 'PROVISIONING_PROFILE = "< your provisiong profile here >";' SuperCoolApp.xcodeproj/project.pbxproj
+if grep --quiet 'PROVISIONING_PROFILE = "< prov prof hash >";' SuperCoolApp.xcodeproj/project.pbxproj
 then
   echo -e "${green}✔ Correct provisioning profile, yay${textreset}"
   ipa build
@@ -112,5 +110,6 @@ fi
 
 Hope this helps you get betas of your app out there quicker and I'd love to hear any suggestions for improvements. Find me at [@neilkimmett](http://www.twitter.com/neilkimmett) or email me at [neil@kimmett.me](mailto:neil@kimmett.me).
 
-
-[1] Depending on your situation (e.g. open source project or not), I would recommend keeping this file out of your version control system to keep others' grubby hands off your Testflight credentials
+<section class="footnotes">
+**1.** Depending on your situation (e.g. open source project or not), I would recommend keeping this file out of your version control system to keep others' grubby hands off your Testflight credentials
+</section>
