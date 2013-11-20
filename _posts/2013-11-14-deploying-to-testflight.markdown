@@ -6,9 +6,17 @@ date:   2013-11-14 22:38:40
 
 Getting your app in front of real users as soon as possible is very important. They will use the app in ways you hadn't even thought of, and uncover hidden bugs and gotchas. My current beta distribution platform of choice is [Testflight](http://www.testflightapp.com). I keep meaning to try [HockeyApp](http://hockeyapp.net), but everyone else here at M&S uses Testflight making it the path of least resistance. Again this is very important as you want it to be as easy as possible for testers to install your app. This is the tale of getting new betas out to testers as painlessly as possible.
 
-The most basic way of uploading builds to Testflight is by creating an archive using Xcode (Product > Archive) then uploading it using the web uploader. This is a tediously manual process involving a whole lot of clicking. We can do better.
+The most basic way of uploading builds to Testflight is by creating an archive using Xcode (Product > Archive) then uploading it using the [web uploader][Testflight Uploader]. This is a tedious manual process involving a whole lot of clicking. We can do better.
+
+[Testflight Uploader]: https://testflightapp.com/dashboard/builds/add/
+
+![Testflight web uploader](/assets/testflight1.png)
+<h3>Using the Testflight web uploader. Grim.</h3>
 
 For a while I used Testflights Mac menubar app, which intelligently watches for any archives you make using Xcode and then offers to upload them. The app then steps you through the process of selecting a provisioning profile, writing release notes, and finally uploading. This removes some friction from the process, but again involves a lot of clicking and hassle. Again, we can do better.
+
+![Testflight Menu bar app](/assets/testflight2.png)
+<h3>Using the Testflight Mac app. Slightly less grim.</h3>
 
 In steps the prolific [Matt Thompson](http://www.twitter.com/mattt) who has written an excellent collection of command line tools for automating various aspects of iOS development and distribution called [Nomad](http://www.nomad-cli.com). The specific tool we want is called [Shenzhen](https://github.com/nomad/shenzhen), and allows you to build archives on the command line and distribute them to Testflight (and HockeyApp and FTP). After a quick `gem install shenzhen`, we can simply
 
@@ -18,24 +26,25 @@ ipa build
 ipa distribute
 {% endhighlight %}
 
-(Or we could do `ipa distribute:testflight`, but distribute defaults to testflight)
+(Or we could do `ipa distribute:testflight`, but `distribute` defaults to Testflight)
 
 As someone who loves the command line this fills me with delight, no more dicking around filling out forms and clicking on boxes, just straight terminal goodness. But wait! You guessed it, we can do better.
 
-Rather than typing (well, copypasting) in our Test  flight API token and team token each time, we can feed them to `ipa` using the `--team-token` and `--API-token` flags. To do so we'll wrap up `ipa` in our own little bash script that contains our Testflight credentials, like so<sup>1</sup>
+Rather than typing (well, copypasting) in our Test flight API token and team token each time, we can feed them to `ipa` using the `--team-token` and `--API-token` flags. To do so we'll wrap up `ipa` in our own little bash script that contains our Testflight credentials, like so<sup>1</sup>
 
 {% highlight bash %}
 
 API_TOKEN="<your api token>"
 TEAM_TOKEN="<your team token>"
 ipa build
-ipa distribute --api_token $API_TOKEN --team_token $TEAM_TOKEN
+ipa distribute --api_token $API_TOKEN \
+               --team_token $TEAM_TOKEN
 
 {% endhighlight %}
 
-You can find your API token and your team token at [https://testflightapp.com/account/#api](https://testflightapp.com/account/#api) and [https://testflightapp.com/dashboard/team/edit/](https://testflightapp.com/dashboard/team/edit/) respectively. Note we could use the flags `-a` and `-T` for the API and team tokens respectively, but I prefer to use the full versions in scripts for readability purposes.
+You can find your API token and your team token [here](https://testflightapp.com/account/#api) and [here](https://testflightapp.com/dashboard/team/edit/) respectively. Note we could use the flags `-a` and `-T` for the API and team tokens respectively, but I prefer to use the full versions in scripts for readability purposes.
 
-Frequently when I come to write releases notes for new build I forget a lot of the new things in that particular build. To help this I like to write release notes as I go, popping them in a `releasenotes.txt` file. How convenient then that `ipa` includes a `--notes` option, which you can pass release notes into. Lets update our script taking care to deal with the case where we don't have any release notes.
+Frequently when I come to write releases notes for new build I forget a lot of the new things in that particular build. To help this I like to write release notes as I go, popping them in a `releasenotes.txt` file. Conveniently `ipa` includes a `--notes` option, which you can pass release notes into. Lets update our script, taking care to deal with the case where we don't have any release notes.
 
 {% highlight bash %}
 
@@ -46,9 +55,12 @@ NOTES="releasenotes.txt"
 ipa build
 if [ -f $NOTES ];
 then
-   ipa distribute --api_token $API_TOKEN --team_token $TEAM_TOKEN --notes "`cat $NOTES`"
+   ipa distribute --api_token $API_TOKEN \
+                  --team_token $TEAM_TOKEN \
+                  --notes "`cat $NOTES`"
 else
-   ipa distribute --api_token $API_TOKEN --team_token $TEAM_TOKEN
+   ipa distribute --api_token $API_TOKEN \
+                  --team_token $TEAM_TOKEN
 fi
 
 {% endhighlight %}
@@ -67,9 +79,12 @@ then
 
   if [ -f $NOTES ];
   then
-     ipa distribute --api_token $API_TOKEN --team_token $TEAM_TOKEN --notes "`cat $NOTES`"
+     ipa distribute --api_token $API_TOKEN \
+                    --team_token $TEAM_TOKEN \
+                    --notes "`cat $NOTES`"
   else
-     ipa distribute --api_token $API_TOKEN --team_token $TEAM_TOKEN
+     ipa distribute --api_token $API_TOKEN \
+                    --team_token $TEAM_TOKEN
   fi
 fi
 
@@ -98,9 +113,16 @@ then
   if [ -f $NOTES ];
   then
      echo -e "${green}✔ Using release notes from ${NOTES}${textreset}"
-     ipa distribute --api_token $API_TOKEN --team_token $TEAM_TOKEN --lists Testers --notify --notes "`cat $NOTES`"
+     ipa distribute --api_token $API_TOKEN \
+                    --team_token $TEAM_TOKEN \
+                    --lists Testers \
+                    --notify \
+                    --notes "`cat $NOTES`"
   else
-     ipa distribute --api_token $API_TOKEN --team_token $TEAM_TOKEN --lists Testers --notify
+     ipa distribute --api_token $API_TOKEN \
+                    --team_token $TEAM_TOKEN \
+                    --lists Testers \
+                    --notify
   fi
 else
   echo -e "${red}✘ Incorrect provisioning profile, change it plz${textreset}"

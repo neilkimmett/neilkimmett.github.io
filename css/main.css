@@ -15,7 +15,7 @@ html, body { height: 100%; }
 body {
   background-color: #FFF;
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  font-size: small;
+  font-size: 1.2em;
   text-align: center;
 }
 
@@ -38,13 +38,20 @@ h1 {
 }
 
 h2 {
-  font-size: 150%;
+  font-size: 125%;
+}
+
+h3 {
+  font-size: 70%;
+  font-weight: normal;
+  color: #999;
+  margin-top: -2em;
 }
 
 .site {
   font-size: 115%;
   text-align: left;
-  width: 42em;
+  width: 30em;
   margin: 3em auto 2em;
   line-height: 1.5em;
 }
@@ -130,7 +137,7 @@ code {
   .site {
     margin: 2em 0;
     padding: 0 1em;
-    width: 80%;
+    width: 90%;
   }
 }
 
@@ -159,6 +166,13 @@ code {
 
 .post pre code {
   border: none;
+  font-size: 80%;
+}
+
+.post img {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 1em;
 }
 
 /* terminal */
