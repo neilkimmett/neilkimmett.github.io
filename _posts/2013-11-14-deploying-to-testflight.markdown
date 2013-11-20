@@ -13,7 +13,9 @@ The most basic way of uploading builds to Testflight is by creating an archive u
 ![Testflight web uploader](/assets/testflight1.png)
 <h3>Using the Testflight web uploader. Grim.</h3>
 
-For a while I used Testflights Mac menubar app, which intelligently watches for any archives you make using Xcode and then offers to upload them. The app then steps you through the process of selecting a provisioning profile, writing release notes, and finally uploading. This removes some friction from the process, but again involves a lot of clicking and hassle. Again, we can do better.
+For a while I used [Testflight's Mac menubar app][testflight-mac-app], which intelligently watches for any archives you make using Xcode and then offers to upload them. The app then steps you through the process of selecting a provisioning profile, writing release notes, and finally uploading. This removes some friction from the process, but again involves a lot of clicking and hassle. Again, we can do better.
+
+[testflight-mac-app]: https://testflightapp.com/desktop/
 
 ![Testflight Menu bar app](/assets/testflight2.png)
 <h3>Using the Testflight Mac app. Slightly less grim.</h3>
@@ -30,7 +32,7 @@ ipa distribute
 
 As someone who loves the command line this fills me with delight, no more dicking around filling out forms and clicking on boxes, just straight terminal goodness. But wait! You guessed it, we can do better.
 
-Rather than typing (well, copypasting) in our Test flight API token and team token each time, we can feed them to `ipa` using the `--team-token` and `--API-token` flags. To do so we'll wrap up `ipa` in our own little bash script that contains our Testflight credentials, like so<sup>1</sup>
+Rather than typing (well, copypasting) in our Testflight API token and team token each time, we can feed them to `ipa` using the `--team-token` and `--API-token` flags. To do so we'll wrap up `ipa` in our own little bash script that contains our Testflight credentials, like so<sup>1</sup>
 
 {% highlight bash %}
 
