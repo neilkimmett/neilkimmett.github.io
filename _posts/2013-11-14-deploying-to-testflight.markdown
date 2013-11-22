@@ -134,6 +134,40 @@ fi
 
 Hope this helps you get betas of your app out there quicker and I'd love to hear any suggestions for improvements. Find me at [@neilkimmett](http://www.twitter.com/neilkimmett) or email me at [neil@kimmett.me](mailto:neil@kimmett.me).
 
+## Update
+
+It turns out theres a much nicer way of specifying a provisioning profile to use. `xcodebuild` (which `ipa` uses under the hood) uses a `PROVISIONING_PROFILE` environment variable, which we can add to the top of our script and get rid of that messy `grep` business. Much nicer:
+
+{% highlight bash %}
+
+API_TOKEN="<your api token>"
+TEAM_TOKEN="<your team token>"
+NOTES="releasenotes.txt"
+PROVISIONING_PROFILE="< prov prof hash >"
+
+textreset=$(tput sgr0) # reset the foreground colour
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+
+ipa build # this now uses PROVISIONING_PROFILE
+
+if [ -f $NOTES ];
+then
+   echo -e "${green}✔ Using release notes from ${NOTES}${textreset}"
+   ipa distribute --api_token $API_TOKEN \
+                  --team_token $TEAM_TOKEN \
+                  --lists Testers \
+                  --notify \
+                  --notes "`cat $NOTES`"
+else
+   ipa distribute --api_token $API_TOKEN \
+                  --team_token $TEAM_TOKEN \
+                  --lists Testers \
+                  --notify
+fi
+
+{% endhighlight %}
+
 <section class="footnotes">
 **1.** Depending on your situation (e.g. open source project or not), I would recommend keeping this file out of your version control system to keep others' grubby hands off your Testflight credentials
 </section>
