@@ -4,3 +4,4 @@ description: Occasional ramblings about iOS, software, and other things
 markdown: redcarpet
 pygments: true
 gems: [rssgenerator]
+google_analytics_id: UA-46017526-1
