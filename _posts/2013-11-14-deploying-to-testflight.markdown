@@ -11,14 +11,15 @@ The most basic way of uploading builds to Testflight is by creating an archive u
 [Testflight Uploader]: https://testflightapp.com/dashboard/builds/add/
 
 ![Testflight web uploader](/assets/testflight1.png)
-<h3>Using the Testflight web uploader. Grim.</h3>
+<figcaption>Using the Testflight web uploader. Grim.</figcaption>
 
 For a while I used [Testflight's Mac menubar app][testflight-mac-app], which intelligently watches for any archives you make using Xcode and then offers to upload them. The app then steps you through the process of selecting a provisioning profile, writing release notes, and finally uploading. This removes some friction from the process, but again involves a lot of clicking and hassle. Again, we can do better.
 
 [testflight-mac-app]: https://testflightapp.com/desktop/
 
 ![Testflight Menu bar app](/assets/testflight2.png)
-<h3>Using the Testflight Mac app. Slightly less grim.</h3>
+
+<figcaption>Using the Testflight Mac app. Slightly less grim.</figcaption>
 
 In steps the prolific [Matt Thompson](http://www.twitter.com/mattt) who has written an excellent collection of command line tools for automating various aspects of iOS development and distribution called [Nomad](http://www.nomad-cli.com). The specific tool we want is called [Shenzhen](https://github.com/nomad/shenzhen), and allows you to build archives on the command line and distribute them to Testflight (and HockeyApp and FTP). After a quick `gem install shenzhen`, we can simply
 
