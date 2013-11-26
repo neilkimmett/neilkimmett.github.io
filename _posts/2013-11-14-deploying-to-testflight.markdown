@@ -177,11 +177,11 @@ So it turns out that the wrong provisioning profile was sometimes still sneaking
 
 {% highlight bash %}
 
-sed -E "s/PROVISIONING_PROFILE = \".+\";/PROVISIONING_PROFILE = \"actual prov prof\";/g" App.xcodeproj/project.pbxproj
+sed -n -E "s/PROVISIONING_PROFILE = \".+\";/PROVISIONING_PROFILE = \"actual prov prof\";/g" App.xcodeproj/project.pbxproj
 
 {% endhighlight %}
 
-This uses [regular expressions][regex]. The `-E` flag tells OS X's `sed` to use the extended regular expression syntax. The bit after the first `/` is what we're looking for, and the bit after the second `/` is what to replace it with. The `.` in our pattern means "match any character" (except a line break). The `*` means "match the previous character zero or more times". Combined `.*` matches our provisioning profile hash. We can slot this `sed` wizardry into the rest of our script, and we should finally have the One True Release script:
+This uses [regular expressions][regex]. The `-E` flag tells OS X's `sed` to use the extended regular expression syntax. The`-n` flag suppresses output from `sed` (otherwise it would spit out the entire contents of your `project.pbxproj` file). The bit after the first `/` is what we're looking for, and the bit after the second `/` is what to replace it with. The `.` in our pattern means "match any character" (except a line break). The `*` means "match the previous character zero or more times". Combined `.*` matches our provisioning profile hash. We can slot this `sed` wizardry into the rest of our script, and we should finally have the One True Release script:
 
 [regex]: http://en.wikipedia.org/wiki/Regular_expression
 
@@ -197,7 +197,7 @@ textreset=$(tput sgr0) # reset the foreground colour
 red=$(tput setaf 1)
 green=$(tput setaf 2)
 
-sed -E "s/PROVISIONING_PROFILE = \".+\";/PROVISIONING_PROFILE = \"$PROVISIONING_PROFILE\";/g" App.xcodeproj/project.pbxproj
+sed -n -E "s/PROVISIONING_PROFILE = \".+\";/PROVISIONING_PROFILE = \"$PROVISIONING_PROFILE\";/g" App.xcodeproj/project.pbxproj
 
 ipa build
 
