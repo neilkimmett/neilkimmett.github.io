@@ -173,15 +173,16 @@ fi
 
 ## Update 2
 
-So it turns out that the wrong provisioning profile was sometimes still sneaking its way into the build do. Fear not, I have a new tactic to stop this: a bit of `sed` magic. `sed` is a standard Unix tool for doing find-and-replace in a file. What we need to find is a line like `PROVISIONING_PROFILE = "stuff";` in our `project.pbxproj` file, and replace it with `PROVISIONING_PROFILE = "our actual provisioning profile";`. We can do this with this incantation:
+So it turns out that the wrong provisioning profile was sometimes still sneaking its way into the build. Fear not, I have a new tactic to stop this: a bit of `sed` magic. `sed` is a standard Unix tool for doing find-and-replace in a file. What we need to find is a line like `PROVISIONING_PROFILE = "stuff";` in our `project.pbxproj` file, and replace it with `PROVISIONING_PROFILE = "our actual provisioning profile";`. We can do this with this incantation:
 
 {% highlight bash %}
 
-sed -n -E "s/PROVISIONING_PROFILE = \".+\";/PROVISIONING_PROFILE = \"actual prov prof\";/g" App.xcodeproj/project.pbxproj
+sed -E 's/PROVISIONING_PROFILE = ".+"/PROVISIONING_PROFILE = "actual prov prof"/g" App.xcodeproj/project.pbxproj > tmp.txt
+mv tmp.txt App.xcodeproj/project.pbxproj
 
 {% endhighlight %}
 
-This uses [regular expressions][regex]. The `-E` flag tells OS X's `sed` to use the extended regular expression syntax. The`-n` flag suppresses output from `sed` (otherwise it would spit out the entire contents of your `project.pbxproj` file). The bit after the first `/` is what we're looking for, and the bit after the second `/` is what to replace it with. The `.` in our pattern means "match any character" (except a line break). The `*` means "match the previous character zero or more times". Combined `.*` matches our provisioning profile hash. We can slot this `sed` wizardry into the rest of our script, and we should finally have the One True Release script:
+This uses [regular expressions][regex]. The `-E` flag tells OS X's `sed` to use the extended regular expression syntax. The bit after the first `/` is what we're looking for, and the bit after the second `/` is what to replace it with. The `.` in our pattern means "match any character" (except a line break). The `*` means "match the previous character zero or more times". Combined `.*` matches our provisioning profile hash. We can slot this `sed` wizardry into the rest of our script, and we should finally have the One True Release script:
 
 [regex]: http://en.wikipedia.org/wiki/Regular_expression
 
@@ -191,13 +192,14 @@ This uses [regular expressions][regex]. The `-E` flag tells OS X's `sed` to use 
 API_TOKEN="<your api token>"
 TEAM_TOKEN="<your team token>"
 NOTES="releasenotes.txt"
-PROVISIONING_PROFILE="< prov prof hash >"
+PROJECT="App.xcodeproj/project.pbxproj"
 
 textreset=$(tput sgr0) # reset the foreground colour
 red=$(tput setaf 1)
 green=$(tput setaf 2)
 
-sed -n -E "s/PROVISIONING_PROFILE = \".+\";/PROVISIONING_PROFILE = \"$PROVISIONING_PROFILE\";/g" App.xcodeproj/project.pbxproj
+sed -n -E 's/PROVISIONING_PROFILE = ".+"/PROVISIONING_PROFILE = "actual prov prof"/g' $PROJECT > tmp.txt
+mv tmp.txt $PROJECT
 
 ipa build
 
