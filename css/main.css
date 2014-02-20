@@ -43,6 +43,10 @@ h2 {
   font-size: 125%;
 }
 
+figure {
+  padding: 1em 0;
+}
+
 figcaption {
   font-size: 70%;
   font-weight: normal;
@@ -177,6 +181,10 @@ code {
   padding-bottom: 1em;
 }
 
+.post img.half {
+  width: 50%;
+}
+
 /* terminal */
 .post pre.terminal {
   border: 1px solid #000;
@@ -187,3 +195,17 @@ code {
 .post pre.terminal code {
   background-color: #333;
 }
+
+/*****************************************************************************/
+/*
+/* Alignment
+/*
+/*****************************************************************************/
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
