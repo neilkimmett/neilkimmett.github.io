@@ -48,5 +48,7 @@ dispatch_to_background_queue {
 
 And thus it was that Swift and Grand Central Dispatch became the best of friends.
 
+**Update**: [Tom Adrianssen](http://www.twitter.com/Inferis) has crafted an even nicer API to GCD, [check out the gist on Github](https://gist.github.com/Inferis/0813bf742742774d55fa). Using nested classes you can start doing cool stuff like `dispatch.async.bg { /* thing */ }` or `dispatch.sync.main { /* thing */ }`
+
 [trailing-closure]: https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/Closures.html#//apple_ref/doc/uid/TP40014097-CH11-XID_126
  
