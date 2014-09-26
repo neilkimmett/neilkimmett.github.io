@@ -11,7 +11,7 @@ First things first, you’re going to need to add an app to iTunes Connect. Clic
 ![Adding a new app in iTunes Connect](/assets/itunes_testflight_add.png)
 <figcaption>Adding a new app in iTunes Connect.</figcaption>
 
-Next you’ll need some people to test your app. Head over to the _Users and Roles_ section, hit the plus button, fill in your testers details and on the next screen assign them the _Technical_ role (or _Admin_ if you’re feeling dangerous I guess). On the final screen (not shown) don’t bother checking any notifications, unless you want your tester to get a bunch of emails they probably don’t care about.
+Next you’ll need some people to test your app. Head over to the _Users and Roles_ section, hit the plus button, fill in your tester’s details and on the next screen assign them the _Technical_ role (or _Admin_ if you’re feeling dangerous I guess). On the final screen (not shown) don’t bother checking any notifications, unless you want your tester to get a bunch of emails they probably don’t care about.
 
 ![Adding a new tester in iTunes Connect](/assets/itunes_testflight_user.png)
 <figcaption>Adding a new tester in iTunes Connect.</figcaption>
