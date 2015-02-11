@@ -3,4 +3,5 @@ url: http://www.kimmett.me
 description: Occasional ramblings about iOS, software, and other things
 markdown: redcarpet
 pygments: true
+future: false
 
