@@ -25,8 +25,8 @@ The first is __this blog__. I hope to write more, and I hope that by writing mor
 
 The second is __Weather Widget__ (working title). This is an app I started at the tail end of last summer. Its a Today widget for iOS that displays the weather for the next 24 hours. The temperature is displayed as a line graph, and the rainfall is displayed as a bar chart beneath it. Just the next 24 hours, just in your current location.
 
-If I don't stick to this vaguest of commitments I sure would appreciate a gentle nudging from someone. Why don't you also commit to something and we can form a mutual pledge to nudge each other? Lets all make some things.
+If I don't stick to this vaguest of commitments I sure would appreciate a gentle nudging from someone. Why don't you also commit to something and we can form a mutual pledge to nudge each other?
 
-Wish me luck folks.
+Wish me luck folks, and thank you Norm.
 
 P.S. My first act of sprucing up this blog is adding an RSS feed. Behold: [http://kimmett.me/feed.xml](http://kimmett.me/feed.xml). I sure would love it if you added it to your feed reading service of choice.
