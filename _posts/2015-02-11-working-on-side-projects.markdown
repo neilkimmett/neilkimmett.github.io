@@ -11,7 +11,7 @@ Yesterday my friend [Norm](https://twitter.com/cackhanded) wrote [an excellent p
 >
 > And so I do nothing.
 
-This really hit a nerve with me. I too am guilty of neglecting numerous ideas and side projects. I have a nasty habit of  starting something, happily hacking away on it for a bit, before getting bored and abandoning it half-finished. In just the last month I've turned down two opportunities to work on super interesting projects, citing my reason as _“I barely get enough time to work on my own side projects, so I have no time to add an extra project  _. The truth of it is I never work on my side projects, this blog included.
+This really hit a nerve with me. I too am guilty of neglecting numerous ideas and side projects. I have a nasty habit of  starting something, happily hacking away on it for a bit, before getting bored and abandoning it half-finished. In just the last month I've turned down two opportunities to work on super interesting projects, citing my reason as _“I barely get enough time to work on my own side projects, so I have no time to add an extra project”_. The truth of it is I never work on my side projects, this blog included.
 
 So, I'm going to take a leaf out of Norm's book:
 
