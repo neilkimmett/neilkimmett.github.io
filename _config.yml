@@ -4,4 +4,6 @@ description: Occasional ramblings about iOS, software, and other things
 markdown: redcarpet
 highlighter: pygments
 future: false
-
+collections:
+  talks:
+    output: true

@@ -114,11 +114,11 @@ footer li {
 }
 
 .content ul {
-  margin: 2em 0;
+  margin: 0;
 }
 
 .content ul > li {
-  list-style-type: none;
+  list-style-type: bullet;
   margin: 1.5em 0 0 0;
 }
 
@@ -161,6 +161,10 @@ code {
 /*****************************************************************************/
 
 /* standard */
+.post {
+  margin-bottom: 5em;
+}
+
 .post pre {
   border: 1px solid #ddd;
   background-color: #eef;

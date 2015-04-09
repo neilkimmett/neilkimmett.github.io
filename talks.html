@@ -1,11 +1,22 @@
 ---
 layout: default
-title: Blog
+title: Talks
 ---
 <ul class="posts">
+  {% for talk in site.talks %}
+
   <li>
-    <h2><a href="/2015/02/13/cmd-r-talk.html"> ⌘R Conf &raquo; </a></h2>
-    <p class="date">21 Oct 2014</p>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/sMiE65xPH84" frameborder="0" allowfullscreen></iframe>
+    <h2>
+      {% if talk.post_url %}
+        <a href="{{ talk.post_url }}">{{ talk.title }} &raquo; </a>
+      {% else %}
+        <a href="{{ talk.url }}">{{ talk.title }} &raquo; </a>
+      {% endif %}
+    </h2>
+    <p class="date">{{ talk.date | date_to_string }}</p>
+    {% if talk.youtube %}
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ talk.youtube }}" frameborder="0" allowfullscreen></iframe
+    {% endif %}
   </li>
+  {% endfor %}
 </ul>
