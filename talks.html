@@ -3,7 +3,8 @@ layout: default
 title: Talks
 ---
 <ul class="posts">
-  {% for talk in site.talks %}
+  {% assign talks = site.talks | sort: 'date' | reverse %}
+  {% for talk in talks %}
 
   <li>
     <h2>
