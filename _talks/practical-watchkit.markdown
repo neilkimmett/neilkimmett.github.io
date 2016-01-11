@@ -2,9 +2,12 @@
 layout: post
 title:  "Practical WatchKit"
 date: 2015-04-23 19:00:00
+vimeo: 133127238
 ---
 
 Given at [NSLondon April 2015](http://www.meetup.com/NSLondon/events/221748091/).
+
+<iframe src="https://player.vimeo.com/video/133127238" width="553" height="373" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 <script async class="speakerdeck-embed" data-id="62ce2a3639df4332905cef57019ec4e2" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
 
