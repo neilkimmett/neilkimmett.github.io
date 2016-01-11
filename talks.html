@@ -16,7 +16,7 @@ title: Talks
     </h2>
     <p class="date">{{ talk.date | date_to_string }}</p>
     {% if talk.youtube %}
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ talk.youtube }}" frameborder="0" allowfullscreen></iframe
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ talk.youtube }}" frameborder="0" allowfullscreen></iframe>
     {% elsif talk.vimeo %}
       <iframe src="https://player.vimeo.com/video/{{ talk.vimeo }}" width="560" height="315" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     {% endif %}
