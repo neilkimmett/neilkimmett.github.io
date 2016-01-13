@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "⌘R Conf talk: “Lessons learned from cooking up an app”"
+title:  "Lessons learned from cooking up an app"
 date: 2014-10-21 14:00:00
 youtube: sMiE65xPH84
 post_url: /2015/02/13/cmd-r-talk.html
