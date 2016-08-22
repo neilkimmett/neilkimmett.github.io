@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "A Swift Introduction To Swift"
-date: 2016-08-22 19:30:00
+title: "A Swift Introduction To Swift"
+date: 2016-08-22
 ---
 
 Given at [Codebar August 2016](https://codebar.io/meetings/monthly-aug-2016).
