@@ -2,7 +2,7 @@ name: Neil Kimmett
 url: http://www.kimmett.me
 description: Occasional ramblings about iOS, software, and other things
 markdown: redcarpet
-highlighter: pygments
+highlighter: rouge
 future: false
 collections:
   talks:
