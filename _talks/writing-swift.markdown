@@ -2,7 +2,10 @@
 layout: post
 title:  "Writing Swift"
 date: 2016-07-05 18:50:00
+youtube: HpLBwDVJh78
 ---
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HpLBwDVJh78" frameborder="0" allowfullscreen></iframe>
 
 Given at [Swift London July 2016](http://www.meetup.com/swiftlondon/events/232249328/).
 
