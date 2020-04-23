@@ -11,7 +11,7 @@ Given at
 - [useReact #6](https://www.meetup.com/useReactNYC/events/265740415/)
 
 
-<iframe src="https://drive.google.com/file/d/1Dcl2EK1Xl4vFJ20ahDGG7NRWL2-rK_uY" width="640" height="480"></iframe>
+<iframe src="https://drive.google.com/file/d/1Dcl2EK1Xl4vFJ20ahDGG7NRWL2-rK_uY/preview" allowfullscreen="allowfullscreen" width="640" height="480"></iframe>
 
 [Slides on SpeakerDeck](https://speakerdeck.com/neilkimmett/react-native-in-a-native-world)
 [Slides as PDF](/assets/react-native-in-a-native-world.pdf)
