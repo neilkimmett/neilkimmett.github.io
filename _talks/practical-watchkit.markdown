@@ -2,7 +2,7 @@
 layout: post
 title:  "Practical WatchKit"
 date: 2015-04-23 19:00:00
-vimeo: 133127238
+# vimeo: 133127238
 ---
 
 Given at [NSLondon April 2015](http://www.meetup.com/NSLondon/events/221748091/).
