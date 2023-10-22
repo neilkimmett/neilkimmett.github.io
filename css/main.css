@@ -118,7 +118,7 @@ footer li {
 }
 
 .content ul > li {
-  list-style-type: bullet;
+  list-style-type: none;
   margin: 1.5em 0 0 0;
 }
 
@@ -220,3 +220,6 @@ code {
   float: right;
 }
 
+::marker {
+  content: "";
+}
